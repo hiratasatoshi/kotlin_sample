@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel.ContributorDetailViewModel" />
+            type="com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel.UserInfoViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -46,6 +46,8 @@
             android:visibility="@{viewModel.detail.name == null ? View.GONE : View.VISIBLE}"
             android:textSize="@dimen/detail_name_text_size"
             android:textColor="@android:color/white"/>
+
+        <!-- login -->
         <TextView
             android:id="@+id/login"
             android:layout_width="wrap_content"
@@ -64,6 +66,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.4" />
 
+        <!-- 詳細情報 -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,85 +76,58 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical">
 
+            <!-- Follower -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.4"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
+                    style="@style/UserInfoLabelText"
                     android:text="@string/followers"/>
-
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/detail_item_space"
-                    android:gravity="left"
+                    style="@style/UserInfoValueText"
                     android:text="@{viewModel.detail.followers}" />
             </LinearLayout>
+
+            <!-- Following -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.4"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
+                    style="@style/UserInfoLabelText"
                     android:text="@string/following"/>
-
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/detail_item_space"
-                    android:gravity="left"
+                    style="@style/UserInfoValueText"
                     android:text="@{viewModel.detail.following}"/>
             </LinearLayout>
+
+            <!-- Location -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.4"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
+                    style="@style/UserInfoLabelText"
                     android:text="@string/location"/>
-
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/detail_item_space"
-                    android:gravity="left"
+                    style="@style/UserInfoValueText"
                     android:text="@{viewModel.detail.location}"/>
             </LinearLayout>
+
+            <!-- Company -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.4"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
+                    style="@style/UserInfoLabelText"
                     android:text="@string/company"/>
-
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/detail_item_space"
-                    android:gravity="left"
+                    style="@style/UserInfoValueText"
                     android:text="@{viewModel.detail.company}"/>
             </LinearLayout>
 
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

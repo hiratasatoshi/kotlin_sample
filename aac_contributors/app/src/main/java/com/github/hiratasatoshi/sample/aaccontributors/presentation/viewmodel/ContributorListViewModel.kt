@@ -1,6 +1,6 @@
 package com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel
 
-import ContributorsDataStore
+import com.github.hiratasatoshi.sample.aaccontributors.data.remote.ContributorsDataStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

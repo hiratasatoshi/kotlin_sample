@@ -35,12 +35,12 @@ class ContributorListAdapter(
         holder.binding.lifecycleOwner = lifecycleOwner
         itemClickListener
         holder.itemView.setOnClickListener {
-            itemClickListener.onClick(viewModel.list.value?.get(position))
+            itemClickListener.onContributorClick(viewModel.list.value?.get(position))
         }
     }
 
-
+    // リストアイテム(Contributor)クリックリスナー
     interface ItemClickListener {
-        fun onClick(item: ContributorInfo?)
+        fun onContributorClick(item: ContributorInfo?)
     }
 }

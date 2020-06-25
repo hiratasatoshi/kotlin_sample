@@ -1,5 +1,6 @@
 package com.github.hiratasatoshi.sample.aaccontributors.data.entity
 
+// ユーザー情報
 data class UserInfo (
     val name: String,
     val login: String,

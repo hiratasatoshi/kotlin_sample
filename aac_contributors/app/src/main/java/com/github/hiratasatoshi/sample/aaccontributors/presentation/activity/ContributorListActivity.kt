@@ -15,6 +15,7 @@ import com.github.hiratasatoshi.sample.aaccontributors.databinding.ActivityContr
 import com.github.hiratasatoshi.sample.aaccontributors.presentation.adapter.ContributorListAdapter
 import com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel.ContributorListViewModel
 
+// contributor一覧表示画面
 class ContributorListActivity : AppCompatActivity(), ContributorListAdapter.ItemClickListener {
 
     lateinit var viewModel: ContributorListViewModel
@@ -22,6 +23,7 @@ class ContributorListActivity : AppCompatActivity(), ContributorListAdapter.Item
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // ViewModel生成とデータバインディング
         viewModel = ViewModelProvider(
             this, ViewModelProvider.AndroidViewModelFactory(application))
             .get(ContributorListViewModel::class.java)
@@ -29,6 +31,7 @@ class ContributorListActivity : AppCompatActivity(), ContributorListAdapter.Item
         val binding = DataBindingUtil.setContentView<ActivityContributorListBinding>(this, R.layout.activity_contributor_list)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
         val adapter = ContributorListAdapter(viewModel, this, this)
         viewModel.list.observe(this, Observer {
             adapter.notifyDataSetChanged()
@@ -39,15 +42,18 @@ class ContributorListActivity : AppCompatActivity(), ContributorListAdapter.Item
         val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.contributorList.addItemDecoration(itemDecoration)
 
+        // contributor一覧取得
         viewModel.getContributors()
     }
 
-
-    override fun onClick(item: ContributorInfo?) {
+    // contributor一覧クリック
+    override fun onContributorClick(item: ContributorInfo?) {
         if (item == null) {
-            Toast.makeText(this, "No available data", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "No available data", Toast.LENGTH_SHORT).show()
             return
         }
+
+        // ユーザー詳細画面を表示
         val intent = Intent()
         intent.setClass(this, UserInfoActivity::class.java)
         intent.putExtra(UserInfoActivity.EXTRA_KEY_LOGIN, item.login)

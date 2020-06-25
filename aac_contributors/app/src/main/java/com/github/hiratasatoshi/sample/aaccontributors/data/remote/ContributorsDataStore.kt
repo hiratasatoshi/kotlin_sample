@@ -1,3 +1,5 @@
+package com.github.hiratasatoshi.sample.aaccontributors.data.remote
+
 import android.util.Log
 import com.github.hiratasatoshi.sample.aaccontributors.data.entity.UserInfo
 import com.github.hiratasatoshi.sample.aaccontributors.data.entity.ContributorInfo
@@ -8,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import java.io.IOException
 
-
+// GitHub APIを実行して情報を取得するためのクラス
 class ContributorsDataStore {
     companion object {
         const val TAG = "ContributorsDataStore"
@@ -16,7 +18,7 @@ class ContributorsDataStore {
     }
 
     interface  IContributorsApiService {
-        // AACリポジトリのcontributor一覧
+        // AACリポジトリのcontributor一覧取得
         @GET("/repos/googlesamples/android-architecture-components/contributors")
         fun getContributors(): Call<MutableList<ContributorInfo>>
 
@@ -33,6 +35,7 @@ class ContributorsDataStore {
             .create(IContributorsApiService::class.java)
     }
 
+    // AACリポジトリのcontributor一覧取得
     fun getContributors(): List<ContributorInfo>? {
         try {
             val response = apiClient().getContributors().execute()
@@ -41,9 +44,9 @@ class ContributorsDataStore {
             Log.e(TAG, "$e")
         }
         return null
-
     }
 
+    // ユーザー詳細
     fun getContributorDetail(login: String): UserInfo? {
         try {
             val response = apiClient().getContributorDetail(login).execute()
