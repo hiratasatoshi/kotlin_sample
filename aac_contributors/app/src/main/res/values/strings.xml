@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">AAC Contributors</string>
     <string name="num_of_contributions">%d contributions</string>
     <string name="followers">Followers</string>

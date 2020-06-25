@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.hiratasatoshi.sample.aaccontributors.R
 import com.github.hiratasatoshi.sample.aaccontributors.data.entity.ContributorInfo
@@ -35,6 +36,8 @@ class ContributorListActivity : AppCompatActivity(), ContributorListAdapter.Item
 
         binding.contributorList.layoutManager = LinearLayoutManager(this)
         binding.contributorList.adapter = adapter
+        val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        binding.contributorList.addItemDecoration(itemDecoration)
 
         viewModel.getContributors()
     }
