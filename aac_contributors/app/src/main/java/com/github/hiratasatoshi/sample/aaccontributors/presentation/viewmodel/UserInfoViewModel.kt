@@ -15,7 +15,7 @@ class UserInfoViewModel: ViewModel() {
 
     fun getContributorDetail(login: String?) {
         login ?: return
-        
+
         GlobalScope.launch(Dispatchers.IO) {
             val data = ContributorsDataStore().getContributorDetail(login)
             _detail.postValue(data)

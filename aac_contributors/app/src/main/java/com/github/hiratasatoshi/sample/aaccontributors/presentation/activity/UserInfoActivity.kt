@@ -1,8 +1,10 @@
 package com.github.hiratasatoshi.sample.aaccontributors.presentation.activity
 
 import android.os.Bundle
+import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.hiratasatoshi.sample.aaccontributors.R
 import com.github.hiratasatoshi.sample.aaccontributors.databinding.ActivityUserInfoBinding
@@ -33,6 +35,14 @@ class UserInfoActivity: AppCompatActivity() {
 
         val login = intent.getStringExtra(EXTRA_KEY_LOGIN)
         viewModel.getContributorDetail(login)
+
+        // ユーザー詳細情報のラベルと値が同タイミングで表示されるよう
+        // LiveDataの更新契機でフェードイン
+        viewModel.detail.observe(this, Observer {
+            val animation = AlphaAnimation(0.0f, 1.0f)
+            animation.duration = 200
+            binding.detailInfoContainer.startAnimation(animation)
+        })
 
     }
 

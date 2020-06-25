@@ -68,9 +68,11 @@
 
         <!-- 詳細情報 -->
         <LinearLayout
+            android:id="@+id/detail_info_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:visibility="@{viewModel.detail == null ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintTop_toTopOf="@id/guide_vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
