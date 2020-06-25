@@ -1,7 +1,7 @@
 # kotlin_sample
 
-Android Architecture Components samplesリポジトリのcontributors一覧を表示するAndroidアプリ。
-Android Architecture Components を使用して、MVVMで作成。
+[・AAC Contributors](https://github.com/hiratasatoshi/kotlin_sample/tree/master/aac_contributors)
 
+　Android Architecture Components samplesリポジトリのcontributors一覧を表示するAndroidアプリのサンプルコード
 
 
