@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel.ContributorDetailViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.activity.UserInfoActivity">
+
+        <!-- 名前とアバター表示領域の背景 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guide_vertical_upper" />
+
+        <!-- アバター -->
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/contributor_icon_size_large"
+            android:layout_height="@dimen/contributor_icon_size_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guide_vertical_upper"
+            app:imageUrl="@{viewModel.detail.avatar_url}" />
+
+        <!-- 名前 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.detail.name}"
+            android:textSize="@dimen/detail_name_text_size"
+            android:textColor="@android:color/white"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_lower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_center_horizontal_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_center_horizontal_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <TextView
+            android:id="@+id/followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/guide_center_horizontal_left"
+            app:layout_constraintTop_toBottomOf="@+id/guide_vertical_lower"
+            android:text="@string/followers"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guide_center_horizontal_right"
+            app:layout_constraintTop_toTopOf="@+id/followers"
+            android:text="@{viewModel.detail.followers}"/>
+
+        <TextView
+            android:id="@+id/following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/guide_center_horizontal_left"
+            app:layout_constraintTop_toBottomOf="@+id/followers"
+            android:text="@string/following"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guide_center_horizontal_right"
+            app:layout_constraintTop_toTopOf="@+id/following"
+            android:text="@{viewModel.detail.following}"/>
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/guide_center_horizontal_left"
+            app:layout_constraintTop_toBottomOf="@+id/following"
+            android:text="@string/location"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guide_center_horizontal_right"
+            app:layout_constraintTop_toTopOf="@+id/location"
+            android:text="@{viewModel.detail.location}"/>
+
+
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/guide_center_horizontal_left"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            android:text="@string/company"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guide_center_horizontal_right"
+            app:layout_constraintTop_toTopOf="@+id/company"
+            android:text="@{viewModel.detail.company}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

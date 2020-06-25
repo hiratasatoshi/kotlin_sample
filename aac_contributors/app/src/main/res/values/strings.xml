@@ -2,4 +2,8 @@
 
     <string name="app_name">AAC Contributors</string>
     <string name="num_of_contributions">%d contributions</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
 </resources>

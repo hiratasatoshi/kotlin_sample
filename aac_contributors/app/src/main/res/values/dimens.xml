@@ -1,6 +1,9 @@
 <resources>
     <dimen name="contributor_icon_size">64dp</dimen>
+    <dimen name="contributor_icon_size_large">96dp</dimen>
     <dimen name="list_item_padding">8dp</dimen>
     <dimen name="list_item_name_text_size">22sp</dimen>
     <dimen name="list_item_contributions_text_size">14sp</dimen>
+    <dimen name="default_text_size">18sp</dimen>
+    <dimen name="detail_name_text_size">24sp</dimen>
 </resources>

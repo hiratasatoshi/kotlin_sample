@@ -1,20 +1,19 @@
 package com.github.hiratasatoshi.sample.aaccontributors.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.github.hiratasatoshi.sample.aaccontributors.R
+import com.github.hiratasatoshi.sample.aaccontributors.data.entity.ContributorInfo
 import com.github.hiratasatoshi.sample.aaccontributors.databinding.ListItemContributorBinding
 import com.github.hiratasatoshi.sample.aaccontributors.presentation.viewmodel.ContributorListViewModel
-import java.util.logging.Handler
 
 class ContributorListAdapter(
     private val viewModel: ContributorListViewModel,
-    private val lifecycleOwner: LifecycleOwner)
+    private val lifecycleOwner: LifecycleOwner,
+    private val itemClickListener: ItemClickListener)
     : RecyclerView.Adapter<ContributorListAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ListItemContributorBinding)
@@ -34,6 +33,14 @@ class ContributorListAdapter(
         holder.binding.viewModel = viewModel
         holder.binding.index = position
         holder.binding.lifecycleOwner = lifecycleOwner
-        //holder.binding.executePendingBindings()
+        itemClickListener
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(viewModel.list.value?.get(position))
+        }
+    }
+
+
+    interface ItemClickListener {
+        fun onClick(item: ContributorInfo?)
     }
 }
